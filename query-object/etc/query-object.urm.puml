@@ -1,0 +1,51 @@
+@startuml
+package com.iluwatar.query_object {
+  class App {
+    + App()
+    + main(args : String[]) {static}
+  }
+  class Battalion {
+    + soldiers : List<Soldier>
+    + Battalion(soldiers : List<Soldier>)
+  }
+  class Kingdom {
+    + battalions : List<Battalion>
+    + kingdomName : String
+    + Kingdom(kingdomName : String, battalions : List<Battalion>)
+    + getBattalions() : List<Battalion>
+    + getKingdomName() : String
+  }
+  class KingdomRepository<T> {
+    + dbKingdoms : Collection<T>
+    + KingdomRepository<T>(dbKingdoms : Collection<T>)
+    + query(criteria : QueryObject<T>[]) : Collection<T>
+  }
+  class KingdomsWithTotalDefenseLessThan {
+    + totalDefense : int
+    + KingdomsWithTotalDefenseLessThan(totalDefense : int)
+    + query() : Predicate<Kingdom>
+  }
+  class KingdomsWithTotalStrengthMoreThan {
+    + totalStrength : int
+    + KingdomsWithTotalStrengthMoreThan(totalStrength : int)
+    + query() : Predicate<Kingdom>
+  }
+  interface QueryObject<T> {
+    + query() : Predicate<T> {abstract}
+  }
+  class SimpleDatabase<T> {
+    + entities : Collection<T>
+    + SimpleDatabase<T>(entities : Collection<T>)
+    + initializeDataset() : SimpleDatabase<Kingdom> {static}
+  }
+  class Soldier {
+    + defence : int
+    + strength : int
+    + Soldier(strength : int, defence : int)
+  }
+}
+Battalion -->  "-soldiers" Soldier
+Kingdom -->  "-battalions" Battalion
+KingdomsWithTotalDefenseLessThan ..|> QueryObject 
+KingdomsWithTotalStrengthMoreThan ..|> QueryObject 
+@enduml

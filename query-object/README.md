@@ -1,13 +1,11 @@
-## Name / classification
-
 ---
 layout: pattern
 title: Query Object
 folder: query-object
 permalink: /patterns/query-object/
 categories: Behavioral
-tags:
-- Data Access
+tags: 
+ - Data Access
 ---
 
 
@@ -26,7 +24,7 @@ This chapter consists of the following sections
 
 ## Class diagram
 
-Shows the class diagram for the pattern example
+![alt text](./etc/query-object.urm.png "Property")
 
 ## Applicability
 
@@ -34,8 +32,6 @@ Shows the class diagram for the pattern example
 - Avoid having a long list of methods for complicated queries.
 
 ## Credits
-
-List of articles/authors that have helped in authoring this pattern example.
 
 [Query Object Pattern](https://www.hojjatk.com/2018/08/query-object-pattern.html)
 
